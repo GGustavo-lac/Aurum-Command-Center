@@ -1,0 +1,106 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="theme-color" content="#090b0e" />
+  <meta name="description" content="AURUM — central de comando para seus empreendimentos, finanças, estoque e metas." />
+  <title>AURUM — Command Center</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=DM+Sans:wght@400;500;600;700&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="./styles.css" />
+</head>
+<body>
+  <div class="ambient ambient-one"></div><div class="ambient ambient-two"></div>
+  <div class="app-shell">
+    <aside class="sidebar" id="sidebar">
+      <div class="brand-lockup">
+        <div class="brand-mark"><svg viewBox="0 0 44 44" aria-hidden="true"><path d="M22 5 39 35H5L22 5Z"/><path d="m22 17 10 18H12l10-18Z"/><path d="M22 5v30"/></svg></div>
+        <div><div class="brand-name">AURUM<span>®</span></div><div class="brand-sub">COMMAND CENTER</div></div>
+      </div>
+      <div class="workspace-label">WORKSPACE</div>
+      <nav class="nav-list" aria-label="Navegação principal">
+        <button class="nav-item active" data-view="overview"><span class="nav-icon">◈</span><span>Visão geral</span><span class="nav-shortcut">01</span></button>
+        <button class="nav-item" data-view="businesses"><span class="nav-icon">▦</span><span>Empreendimentos</span><span class="nav-shortcut">02</span></button>
+        <button class="nav-item" data-view="finance"><span class="nav-icon">⌁</span><span>Financeiro</span><span class="nav-shortcut">03</span></button>
+        <button class="nav-item" data-view="inventory"><span class="nav-icon">▤</span><span>Estoque & produtos</span><span class="nav-shortcut">04</span></button>
+        <button class="nav-item" data-view="tasks"><span class="nav-icon">☷</span><span>Central de tarefas</span><span class="nav-shortcut">05</span></button>
+        <button class="nav-item" data-view="investments"><span class="nav-icon">◌</span><span>Aplicações</span><span class="nav-shortcut">06</span></button>
+        <button class="nav-item" data-view="mood"><span class="nav-icon">♫</span><span>Mood do dia</span><span class="nav-shortcut">07</span></button>
+      </nav>
+      <div class="sidebar-bottom">
+        <div class="ai-mini-card"><div class="ai-mini-top"><span class="ai-pulse"></span><span>INTELIGÊNCIA AURUM</span></div><p>Seu copiloto de negócios, pronto para organizar suas ideias.</p><button class="text-action" data-open-chat>Conversar com a IA <span>↗</span></button></div>
+        <div class="profile-row"><div class="avatar">GL</div><div class="profile-copy"><strong>Chefe</strong><small>Founder · AURUM</small></div><span class="profile-dots">•••</span></div>
+      </div>
+    </aside>
+
+    <main class="main-area">
+      <header class="topbar">
+        <div class="topbar-left"><button class="mobile-menu" id="mobileMenu" aria-label="Abrir menu">☰</button><div class="breadcrumb">AURUM <span>/</span> <b id="breadcrumbTitle">VISÃO GERAL</b></div></div>
+        <div class="topbar-right"><div class="live-indicator"><span></span> SISTEMA OPERACIONAL</div><div class="top-date" id="todayLabel"></div><button class="icon-button" id="backupButton" title="Exportar backup JSON">⇩</button><button class="icon-button" id="restoreButton" title="Importar backup JSON">⇧</button><button class="top-avatar">GL</button></div>
+      </header>
+
+      <section class="view active" id="view-overview">
+        <div class="page-heading"><div><div class="eyebrow"><span class="eyebrow-line"></span> PAINEL EXECUTIVO</div><h1 id="greetingTitle">Bom dia, chefe<span class="gold-dot">.</span></h1><p class="page-subtitle">Visão consolidada do que está acontecendo nos seus negócios.</p></div><div class="heading-actions"><button class="button button-ghost" data-action="quick-note">＋ Lançamento rápido</button><button class="button button-gold" data-open-chat>✧ Falar com a IA</button></div></div>
+        <div class="stat-grid">
+          <article class="stat-card"><div class="stat-head"><span>FATURAMENTO TOTAL</span><span class="stat-glyph">↗</span></div><div class="stat-value" id="statRevenue">R$ 0,00</div><div class="stat-foot"><span class="stat-muted">Receitas registradas</span><span class="stat-chip neutral" id="revenueCount">0 lançamentos</span></div><div class="stat-spark spark-gold"><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i></div></article>
+          <article class="stat-card"><div class="stat-head"><span>LUCRO OPERACIONAL</span><span class="stat-glyph">⌁</span></div><div class="stat-value" id="statProfit">R$ 0,00</div><div class="stat-foot"><span class="stat-muted">Receitas − despesas</span><span class="stat-chip neutral" id="marginValue">0% margem</span></div><div class="stat-spark spark-green"><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i></div></article>
+          <article class="stat-card"><div class="stat-head"><span>DESPESAS REGISTRADAS</span><span class="stat-glyph">↘</span></div><div class="stat-value" id="statExpenses">R$ 0,00</div><div class="stat-foot"><span class="stat-muted">Custos e saídas</span><span class="stat-chip neutral" id="expenseCount">0 lançamentos</span></div><div class="stat-spark spark-red"><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i></div></article>
+          <article class="stat-card"><div class="stat-head"><span>CAPITAL APLICADO</span><span class="stat-glyph">◉</span></div><div class="stat-value" id="statInvested">R$ 0,00</div><div class="stat-foot"><span class="stat-muted">Em aplicações cadastradas</span><span class="stat-chip neutral" id="investmentCount">0 aplicações</span></div><div class="stat-spark spark-blue"><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i></div></article>
+        </div>
+        <div class="dashboard-grid">
+          <article class="panel chart-panel"><div class="panel-heading"><div><div class="panel-kicker">PERFORMANCE</div><h2>Fluxo financeiro</h2></div><div class="chart-legend"><span><i class="legend-dot gold"></i>Receitas</span><span><i class="legend-dot muted"></i>Despesas</span></div></div><div class="chart-summary"><strong id="chartTotal">R$ 0,00</strong><span>Movimentação nos últimos 6 meses</span></div><div class="chart-wrap" id="financeChart"><div class="empty-chart">Seus lançamentos aparecerão neste gráfico.</div></div></article>
+          <article class="panel portfolio-panel"><div class="panel-heading"><div><div class="panel-kicker">PORTFÓLIO</div><h2>Seus negócios</h2></div><button class="subtle-link" data-view-link="businesses">Ver todos ↗</button></div><div id="portfolioList" class="portfolio-list"></div><button class="add-dashed" data-action="new-project">＋ Adicionar empreendimento</button></article>
+          <article class="panel goals-panel"><div class="panel-heading"><div><div class="panel-kicker">PRÓXIMOS MARCOS</div><h2>Metas em andamento</h2></div><span class="tiny-counter" id="goalCount">00</span></div><div id="goalsList" class="goals-list"></div></article>
+          <article class="panel activity-panel"><div class="panel-heading"><div><div class="panel-kicker">AO VIVO</div><h2>Últimas movimentações</h2></div><button class="subtle-link" data-view-link="finance">Histórico ↗</button></div><div id="activityList" class="activity-list"></div></article>
+        </div>
+      </section>
+
+      <section class="view" id="view-businesses">
+        <div class="page-heading"><div><div class="eyebrow"><span class="eyebrow-line"></span> UNIDADES DE NEGÓCIO</div><h1>Empreendimentos<span class="gold-dot">.</span></h1><p class="page-subtitle">Cada nicho no seu quadrado. Um só painel para comandar tudo.</p></div><div class="heading-actions"><button class="button button-gold" data-action="new-project">＋ Novo empreendimento</button></div></div>
+        <div class="filter-row"><div class="filter-label">SEUS PROJETOS <span id="businessCount">02</span></div><div class="filter-actions"><input class="search-input" id="businessSearch" placeholder="Buscar empreendimento..."/><select id="businessSort" class="select-dark"><option value="name">Nome</option><option value="profit">Maior lucro</option><option value="recent">Mais recentes</option></select></div></div>
+        <div class="business-grid" id="businessGrid"></div>
+      </section>
+
+      <section class="view" id="view-finance">
+        <div class="page-heading"><div><div class="eyebrow"><span class="eyebrow-line"></span> CONTROLE DE CAIXA</div><h1>Financeiro<span class="gold-dot">.</span></h1><p class="page-subtitle">Saiba exatamente quanto entrou, quanto saiu e quanto sobrou.</p></div><div class="heading-actions"><button class="button button-ghost" data-action="export-csv">⇩ Exportar CSV</button><button class="button button-gold" data-action="quick-note">＋ Novo lançamento</button></div></div>
+        <div class="finance-overview" id="financeOverview"></div>
+        <div class="panel table-panel"><div class="panel-heading"><div><div class="panel-kicker">REGISTRO COMPLETO</div><h2>Livro-caixa</h2></div><div class="filter-actions"><select id="financeFilter" class="select-dark"><option value="all">Todas as movimentações</option><option value="revenue">Só receitas</option><option value="expense">Só despesas</option></select></div></div><div class="table-scroll"><table class="data-table"><thead><tr><th>DESCRIÇÃO</th><th>EMPREENDIMENTO</th><th>DATA</th><th>TIPO</th><th class="align-right">VALOR</th><th></th></tr></thead><tbody id="financeRows"></tbody></table></div><div id="financeEmpty" class="empty-state">Nenhum lançamento por aqui. Registre sua primeira receita ou despesa.</div></div>
+      </section>
+
+      <section class="view" id="view-inventory">
+        <div class="page-heading"><div><div class="eyebrow"><span class="eyebrow-line"></span> OPERAÇÃO & LOGÍSTICA</div><h1>Estoque & produtos<span class="gold-dot">.</span></h1><p class="page-subtitle">Acompanhe mercadoria, custo, preço de venda e margem potencial.</p></div><div class="heading-actions"><button class="button button-gold" data-action="new-stock">＋ Cadastrar produto</button></div></div>
+        <div class="inventory-kpis" id="inventoryKpis"></div>
+        <div class="inventory-grid" id="inventoryGrid"></div>
+      </section>
+
+      <section class="view" id="view-tasks">
+        <div class="page-heading"><div><div class="eyebrow"><span class="eyebrow-line"></span> EXECUÇÃO</div><h1>Central de tarefas<span class="gold-dot">.</span></h1><p class="page-subtitle">Ideia sem execução é só anotação. Transforme plano em entrega.</p></div><div class="heading-actions"><button class="button button-gold" data-action="new-task">＋ Nova tarefa</button></div></div>
+        <div class="task-progress-panel panel"><div><div class="panel-kicker">RITMO DE EXECUÇÃO</div><h2 id="taskProgressText">0 de 0 tarefas concluídas</h2><div class="progress-track"><span id="taskProgressBar"></span></div></div><div class="task-progress-number" id="taskProgressPct">0<small>%</small></div></div>
+        <div class="task-columns"><div class="panel task-list-panel"><div class="panel-heading"><h2>Em aberto</h2><span class="tiny-counter" id="openTaskCount">00</span></div><div id="openTasks"></div></div><div class="panel task-list-panel"><div class="panel-heading"><h2>Concluídas</h2><span class="tiny-counter" id="doneTaskCount">00</span></div><div id="doneTasks"></div></div></div>
+      </section>
+
+      <section class="view" id="view-investments">
+        <div class="page-heading"><div><div class="eyebrow"><span class="eyebrow-line"></span> ALOCAÇÃO DE CAPITAL</div><h1>Aplicações<span class="gold-dot">.</span></h1><p class="page-subtitle">Controle o dinheiro que está rendendo separado da operação.</p></div><div class="heading-actions"><button class="button button-gold" data-action="new-investment">＋ Nova aplicação</button></div></div>
+        <div class="investment-summary" id="investmentSummary"></div><div id="investmentList" class="investment-grid"></div>
+      </section>
+
+      <section class="view" id="view-mood">
+        <div class="page-heading"><div><div class="eyebrow"><span class="eyebrow-line"></span> SOUNDTRACK DO FUNDADOR</div><h1>Mood do dia<span class="gold-dot">.</span></h1><p class="page-subtitle">O mercado muda. A trilha sonora acompanha.</p></div><div class="heading-actions"><span class="mood-date" id="moodDate"></span></div></div>
+        <div class="mood-layout"><div class="panel mood-selector-panel"><div class="panel-kicker">COMO ESTÁ O SEU DIA, CHEFE?</div><h2>Escolha a frequência.</h2><p class="muted-copy">Sem filtro: conta como foi e a AURUM escolhe uma trilha para esse momento.</p><div class="mood-options" id="moodOptions"><button class="mood-option" data-mood="focus"><span>◉</span><b>Modo execução</b><small>Foco total, sem distração</small></button><button class="mood-option" data-mood="delay"><span>⌛</span><b>Operação travada</b><small>Fornecedor, entrega, atraso...</small></button><button class="mood-option" data-mood="loss"><span>↘</span><b>Dia difícil</b><small>Nem todo dia é vitória</small></button><button class="mood-option" data-mood="win"><span>✦</span><b>Dia de vitória</b><small>Venda, meta, conquista</small></button><button class="mood-option" data-mood="viral"><span>↗</span><b>Viralizou</b><small>O vídeo bateu forte</small></button><button class="mood-option" data-mood="ambition"><span>♛</span><b>Visão de império</b><small>Pensando grande</small></button></div><label class="field-label" for="moodNote">O QUE ACONTECEU HOJE?</label><textarea id="moodNote" class="dark-textarea" placeholder="Ex.: Fiz R$ 1.000 em vendas hoje. O vídeo viralizou e o estoque quase acabou..."></textarea><button class="button button-gold full-button" id="generateMood">✧ GERAR MINHA TRILHA</button></div><div class="mood-result-column"><div class="mood-cover" id="moodCover"><div class="cover-orbit orbit-a"></div><div class="cover-orbit orbit-b"></div><div class="cover-center">A<span>U</span></div><div class="cover-bottom"><small>AURUM SOUNDTRACK</small><strong>YOUR DAY.<br/>YOUR TEMPO.</strong></div><div class="cover-index">VOL. 001 / 2026</div></div><div class="panel track-panel" id="moodResult"><div class="panel-kicker">SUA TRILHA DE HOJE</div><h2>O próximo movimento começa agora.</h2><p class="muted-copy">Selecione seu mood e gere uma música que combine com a sua fase.</p></div></div></div>
+      </section>
+
+      <footer class="app-footer"><span> AURUM COMMAND CENTER <i>·</i> PRIVATE BUSINESS OS</span><span>SEUS DADOS FICAM NESTE NAVEGADOR <b>●</b></span></footer>
+    </main>
+  </div>
+
+  <button class="floating-ai" data-open-chat aria-label="Abrir copiloto IA"><span>✧</span><small>IA</small></button>
+  <div class="toast-stack" id="toastStack" aria-live="polite"></div>
+  <div class="modal-backdrop" id="modalBackdrop"><div class="modal-card" id="modalCard" role="dialog" aria-modal="true" aria-labelledby="modalTitle"><div class="modal-header"><div><div class="panel-kicker" id="modalKicker">AURUM / REGISTRO</div><h2 id="modalTitle">Novo registro</h2></div><button class="close-button" id="closeModal" aria-label="Fechar">×</button></div><div id="modalBody"></div></div></div>
+
+  <div class="chat-overlay" id="chatOverlay"><section class="chat-panel"><header class="chat-header"><div class="chat-brand"><div class="chat-brand-icon">✧</div><div><strong>AURUM INTELLIGENCE</strong><small>Seu copiloto de negócios · <span class="ai-status-dot"></span> online</small></div></div><button class="close-button" id="closeChat" aria-label="Fechar chat">×</button></header><div class="chat-context"><span>◈</span> A IA pode organizar lançamentos, metas, tarefas e estoque a partir do que você contar.</div><div class="chat-messages" id="chatMessages"><div class="chat-message assistant"><div class="message-avatar">✧</div><div class="message-bubble"><p>Fala, chefe. Qual é o movimento de hoje?</p><small>EXEMPLOS DO QUE VOCÊ PODE DIZER</small><div class="prompt-chips"><button data-prompt="Faturei R$ 1.000 hoje no TikTok Shop">“Faturei R$ 1.000 hoje no TikTok Shop”</button><button data-prompt="Paguei R$ 350 de fornecedor na importação">“Paguei R$ 350 de fornecedor”</button><button data-prompt="Preciso postar 3 vídeos até sexta">“Preciso postar 3 vídeos até sexta”</button></div></div></div></div><div class="suggestion-holder" id="suggestionHolder"></div><form class="chat-composer" id="chatForm"><textarea id="chatInput" rows="1" placeholder="Conta pra mim, chefe..." aria-label="Mensagem para a IA"></textarea><button type="submit" id="sendChat" aria-label="Enviar mensagem">↑</button></form><div class="chat-disclaimer">A IA sugere alterações. Você confirma antes de salvar.</div></section></div>
+
+  <script type="module" src="./app.js"></script>
+</body>
+</html>
